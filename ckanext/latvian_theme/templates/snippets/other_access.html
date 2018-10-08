@@ -1,0 +1,10 @@
+{% block other_access %}
+	{% if h.check_access('package_update', {'id':pkg_dict.id }) %}
+	<section class="module module-narrow">
+		<h2 class="module-heading"><i class="icon-medium icon-cog"></i>{{ _('Metadata') }}</h2>
+				<ul class="nav nav-simple">
+					<li class="nav-item"><a href="{{ h.url_for(controller='api', action='get_package_meta', ver=3, id=pkg_dict.id) }}" target="__blank"><i class="icon-file-text"></i>JSON</a></li>
+				</ul>
+	</section>
+	{% endif %}
+{% endblock %}
