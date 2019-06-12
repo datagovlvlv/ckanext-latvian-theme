@@ -1,14 +1,5 @@
-<div class="control-group">
+<div class="form-group">
   <div class="controls">
-    {% if g.recaptcha_version == '1' %}
-      <script type="text/javascript" src="//www.google.com/recaptcha/api/challenge?k={{ public_key }}"></script>
-      
-      <noscript>
-        <iframe src="//www.google.com/recaptcha/api/noscript?k={{ public_key }}" height="300" width="500" frameborder="0"></iframe><br>
-        <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-        <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
-      </noscript>
-    {% elif g.recaptcha_version == '2' %}
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
       <div class="g-recaptcha" data-sitekey="{{ public_key }}"></div>
       
@@ -23,6 +14,5 @@
           </div>
         </div>
       </noscript>
-    {% endif %}
   </div>
 </div>

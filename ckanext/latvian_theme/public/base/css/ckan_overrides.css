@@ -262,35 +262,6 @@ select, input[type="text"], input[type="password"], input[type="datetime"], inpu
     text-shadow: none;
 }
 
-.modal {
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    z-index: 1050;
-    width: 650px;
-    margin-left: -325px;
-    background-color: #ffffff;
-    border: 1px solid #999;
-    border: 1px solid rgba(0,0,0,0.3);
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
-    -moz-box-shadow: 0 3px 7px rgba(0,0,0,0.3);
-    box-shadow: 0 3px 7px rgba(0,0,0,0.3);
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding-box;
-    background-clip: padding-box;
-    outline: none;
-    max-height: 470px;
-}
-
-.modal-body {
-    position: relative;
-    overflow-y: auto;
-    max-height: 405px;
-    padding: 15px;
-}
 
 .captcha {
     margin-top: 20px;
@@ -366,19 +337,30 @@ body {
     flex: 1 1 auto;
 }
 
-.modal {
-    display: flex;
-    flex-direction: column;
-}
-
 .hide {
   display: none;
 }
 
-.modal-body {
-  flex: 1 1 auto;
-}
-
 .form-inline .btn-primary {
   margin-top: 15px;
+}
+
+.modal {
+    margin-top: 0 !important;
+}
+
+@media (min-width: 768px)
+{
+.modal-dialog {
+    width: 750px;
+    margin: 30px auto;
+}
+}
+
+@media (max-width: 991px)
+{
+  .stages li .highlight {
+      text-indent: 0;
+      text-overflow: hidden;
+  }
 }

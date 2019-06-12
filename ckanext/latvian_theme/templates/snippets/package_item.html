@@ -19,9 +19,10 @@ Example:
 {% set notes = h.markdown_extract(package.notes, extract_length=truncate) %}
 
 {% block package_item %}
-  <li class="{{ item_class or "dataset-item" }}">
+  <li class="{{ item_class or "dataset-item" }}" style="border: 0; border-right: 5px solid #000; padding-right: 10px">
     {% block content %}
-      <div class="dataset-content">
+    <div class="row">
+      <div class="dataset-content col-sm-9">
         {% block heading %}
           <h3 class="dataset-heading">
             {% block heading_private %}
@@ -41,7 +42,7 @@ Example:
               {% elif package.get('state', '').startswith('deleted') %}
                 <span class="label label-important">{{ _('Deleted') }}</span>
               {% endif %}
-              {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
+              <!--{{ h.popular('recent views', package.tracking_summary.recent, min=1) if package.tracking_summary }}-->
             {% endblock %}
           </h3>
         {% endblock %}
@@ -59,9 +60,18 @@ Example:
         {% endblock %}
       </div>
       {% block resources %}
+      <div class="col-sm-3" style="text-align: right;">
+        <span style="font-weight: bold; color: #000;">
+        {% if package.groups %}
+          {{ package.groups[0].display_name }} <br/>
+        {% else %}
+          Cits <br/>
+        {% endif %}
+        </span>
+        <br/><br/>
         {% if package.resources and not hide_resources %}
           {% block resources_outer %}
-            <ul class="dataset-resources unstyled">
+            <ul class="dataset-resources unstyled" style="margin-top: 0; ">
               {% block resources_inner %}
                 {% for resource in h.dict_list_reduce(package.resources, 'format') %}
                 <li>
@@ -72,7 +82,13 @@ Example:
             </ul>
           {% endblock %}
         {% endif %}
+        {% if package.tracking_summary %}
+        <span style="color: #777777; font-size: 12px;">{{ package.tracking_summary.total if package.tracking_summary else 0 }} skatījumi</span>
+        {% endif %}
+      </div>
       {% endblock %}
+      </div>
     {% endblock %}
+  
   </li>
 {% endblock %}

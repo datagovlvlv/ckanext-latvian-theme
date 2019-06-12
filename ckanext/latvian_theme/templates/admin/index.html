@@ -2,7 +2,7 @@
 
 {% block primary_content_inner %}
   <ul class="user-list">
-    {% for user in c.sysadmins %}
+    {% for user in sysadmins %}
       <li>{{ h.linked_user(user) }}</li>
     {% endfor %}
   </ul>
@@ -11,7 +11,7 @@
 {% block secondary_content %}
   <div class="module module-narrow module-shallow">
     <h2 class="module-heading">
-      <i class="icon-info-sign"></i>
+      <i class="fa fa-info-circle"></i>
       {{ _('Administer CKAN') }}
     </h2>
     <div class="module-content">
